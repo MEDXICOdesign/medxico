@@ -1,5 +1,3 @@
-
-
 const RESOURCE_DESC = {
   full: "full tertiary care (ECMO, Swan-Ganz, all specialists 24h, complete pharmacopeia)",
   intermediate: "intermediate resources (invasive ventilation, vasopressors, basic lab; no ECMO, limited specialists)",
@@ -36,37 +34,29 @@ Return ONLY valid JSON, no markdown, no text before or after:
 }`;
 }
 
-export default async function handler(req) {
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   if (req.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+    return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { scenario, resourceLevel, lang } = await req.json();
+    const { scenario, resourceLevel, lang } = req.body;
 
     if (!scenario || !resourceLevel || !lang) {
-      return new Response(JSON.stringify({ error: 'Missing parameters' }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return res.status(400).json({ error: 'Missing parameters' });
     }
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'API key not configured' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+      return res.status(500).json({ error: 'API key not configured' });
     }
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -88,16 +78,9 @@ export default async function handler(req) {
     const clean = raw.replace(/```json|```/g, '').trim();
     const result = JSON.parse(clean);
 
-    return new Response(JSON.stringify(result), {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return res.status(200).json(result);
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Generation failed' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    console.error('Generate error:', err);
+    return res.status(500).json({ error: 'Generation failed', detail: err.message });
   }
 }
