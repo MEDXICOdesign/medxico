@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" width="1100" height="420">
+<rect width="1100" height="420" fill="white"/>
+<text x="97.0" y="292.0" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="188" fill="#20B296" letter-spacing="-2">MED</text>
+<text x="661.0" y="292.0" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="188" fill="#20B296" letter-spacing="-2">ICO</text>
+<line x1="653.2" y1="107.4" x2="504.8" y2="107.4" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+<line x1="636.5" y1="146.5" x2="521.5" y2="146.5" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+<line x1="524.2" y1="296.9" x2="633.8" y2="296.9" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+<line x1="505.8" y1="336.5" x2="652.2" y2="336.5" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+<path d="M506.0,76.5 C491.4,116.3 535.2,170.2 579.0,224.0" fill="none" stroke="#20B296" stroke-width="8.5" stroke-linecap="round"/>
+<path d="M652.0,76.5 C681.2,156.2 476.8,291.9 506.0,371.5" fill="none" stroke="#E1386C" stroke-width="10.0" stroke-linecap="round"/>
+<path d="M579.0,224.0 C622.8,277.8 666.6,331.7 652.0,371.5" fill="none" stroke="#20B296" stroke-width="10.0" stroke-linecap="round"/>
+<circle cx="653.2" cy="107.4" r="6.5" fill="#E1386C"/>
+<circle cx="504.8" cy="107.4" r="6.5" fill="#20B296"/>
+<circle cx="636.5" cy="146.5" r="6.5" fill="#E1386C"/>
+<circle cx="521.5" cy="146.5" r="6.5" fill="#20B296"/>
+<circle cx="524.2" cy="296.9" r="6.5" fill="#E1386C"/>
+<circle cx="633.8" cy="296.9" r="6.5" fill="#20B296"/>
+<circle cx="505.8" cy="336.5" r="6.5" fill="#E1386C"/>
+<circle cx="652.2" cy="336.5" r="6.5" fill="#20B296"/>
+</svg>
