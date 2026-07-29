@@ -1,4 +1,4 @@
-export const config = { runtime: 'edge' };
+
 
 const RESOURCE_DESC = {
   full: "full tertiary care (ECMO, Swan-Ganz, all specialists 24h, complete pharmacopeia)",
